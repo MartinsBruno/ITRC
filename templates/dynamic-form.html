@@ -1,0 +1,106 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<div class="p-body">
+	<div>
+        <h1 class="display-3">{{ name }}</h1>
+    </div>
+    <form method="POST">
+        <fieldset>
+            <div class="p-1" id="divRadioSelect">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="radioReportHostgroup" name="radioReport" type="radio" checked="checked" onclick="showSelectHostgroup()">
+                    <label class="form-check-label" for="radioReportHostgroup">Host Group</label>
+                </div>
+                <div class="form-check form-check-inline" id="divSelectHost">
+                    <input class="form-check-input" id="radioReportHost" name="radioReport" type="radio" onclick="showSelectHost()">
+                    <label class="form-check-label" for="radioReportHost">Host</label>
+                </div>
+            </div>
+            <div id="divSelectHostgroup">
+                <select class="b-1 custom-select" name="fromRadioSelecHostgroup" id="fromRadioSelecHostgroup">
+                    {% for hostgroup in reportTypeHostgroup %}
+                        <option value="{{ hostgroup.id }}">{{hostgroup.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="divSelectHost">
+                <select class="b-1 custom-select" name="fromRadioSelecHost" id="fromRadioSelecHost">
+                    {% for host in reportTypeHost %}
+                        <option value="{{ host.id }}">{{host.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="divGroupOptionsReport" class="p-1">
+                <div id="divSelectOptionsReport">
+                    <input id="includeGraphs" type="checkbox" name="includeGraphs" value="yes" checked="">
+                    <label class="form-checkbox-label p-chebox" for="includeGraphs">Include Graphs</label>
+
+                    <input id="includeGraphedItems" type="checkbox" name="includeGraphedItems" value="yes">
+                    <label class="form-checkbox-label p-chebox" for="includeGraphedItems">Include graphed items</label>
+
+                    <input id="includeTriggers" type="checkbox" name="includeTriggers" value="yes">
+                    <label class="form-checkbox-label p-chebox" for="includeTriggers">Show triggers</label>
+
+                    <input id="includeStatus" type="checkbox" name="includeStatus" value="yes">
+                    <label class="form-checkbox-label p-chebox" for="includeStatus">Show configured status</label>
+
+                    <input id="includeTrends" type="checkbox" name="includeTrends" value="yes">
+                    <label class="form-checkbox-label p-chebox" for="includeTrends">Show configured trends</label>
+                </div>               
+            </div>
+            <div id="divGroupSearchType" class="p-1">
+                <h3 class="display-5">Search Type</h3>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="radioSearchTypeAll" name="radioSearchType" type="radio" checked="checked" onclick="showSearchTypeAll()">
+                    <label class="form-check-label" for="radioSearchTypeAll">All graphs</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="radioSearchTypeRegular" name="radioSearchType" type="radio" onclick="showSearchTypeRegular()">
+                    <label class="form-check-label" for="radioSearchTypeRegular">By regular expression</label>
+                </div>
+                <div id="divSearchTypeGraphs" class="form-check form-check-inline p-1">
+                    <input class="form-control form-check-input" type="text" id="textSearchGraphs" name="textSearchGraphs" placeholder="Graphs to show">
+                </div>
+                <div id="divSearchTypeItems" class="form-check form-check-inline p-1">
+                    <input type="text" id="textSearchItems" name="textSearchItems" class="form-control form-check-input" placeholder="Items to graph">
+                </div>
+            </div>
+            <div id="divGroupReportRange" class="p-1">
+                <h3 class="display-5">Report range</h3>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="radioReportRangeStandard" name="radioReportRange" type="radio" checked="checked" onclick="">
+                    <label class="form-check-label" for="radioSearchTypeAll">Last</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="radioReportRangeCustom" name="radioReportRange" type="radio" onclick="">
+                    <label class="form-check-label" for="radioReportRangeCustom">Custom</label>
+                </div>
+            </div>
+            <div id="divGroupReportRange" class="p-1">
+                <div class="form-check form-check-inline">
+                    <select class="b-1 custom-select" name="fromRadioReportRangeStandard" id="fromRadioReportRangeStandard">
+                        <option value="lastHour">Hour</option>
+                        <option value="lastDay">Day</option>
+                        <option value="lastWeek">Week</option>
+                        <option value="lastMonth">Month</option>
+                        <option value="lastYear">Year</option>
+                    </select> 
+                </div>
+                <div class="form-check form-check-inline">
+                    <input id="datePickerStart" name="startDate" type="date" size="8" required="" class="form-control">   
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input id="datePickerEnd" name="endDate" type="date" size="8" required="" class="form-control">   
+                </div>
+
+            </div>
+            <div id="divGroupSubmit" class="p-1">
+                <div class="form-check form-check-inline">
+                    <input type="submit" id="dynamicSubmit" class="btn btn-outline-primary btn-sm" name="dynamicSubmit" value="Create Report">  
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

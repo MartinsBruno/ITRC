@@ -1,0 +1,40 @@
+{% extends "template-pdf.html" %}
+{% block conteudo %}
+<div class="container table-responsive">
+        {% for host in hostList %}
+    <table id="dtBasicExample" class="table table-sm table-striped table-bordered" style="height: 100px;">
+        <thead class="thead-light">
+            <tr id='{{host.name}}'>
+                <th colspan="7" class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">{{host.name}}</th>
+            <tr>
+            <tr>
+                <!--<th class="th-sm report-text-position" scope="row">Name</th>-->
+                <th class="th-sm report-text-position" scope="row">Interface</th>
+                <th class="th-sm report-text-position" scope="row">Applications</th>
+                <th class="th-sm report-text-position" scope="row">Items</th>
+                <th class="th-sm report-text-position" scope="row">Triggers</th>
+                <th class="th-sm report-text-position" scope="row">Graphs</th>
+                <th class="th-sm report-text-position" scope="row">Status</th>
+                <th class="th-sm report-text-position" scope="row">Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id='{{host.hostname}}'>
+                <!--<td style="vertical-align: middle;"><pre class="pre-text-format">{{host.name}}</pre></td>-->
+                <td class="report-text-position" style="vertical-align: middle;">{{host.interface}}</td>
+                <td style="vertical-align: middle;"><pre class="pre-text-format">{{host.application}}</pre></td>
+                <td class="report-text-position" style="vertical-align: middle;">{{host.item}}</td>
+                <td class="report-text-position" style="vertical-align: middle;">{{host.triggers}}</td>
+                <td class="report-text-position" style="vertical-align: middle;">{{host.graphs}}</td>
+                {% if host.status == "Enable"%}
+                    <td class="report-text-position report-text-success" style="vertical-align: middle;">{{host.status}}</td>
+                {% else %}
+                    <td class="report-text-position report-text-disaster" style="vertical-align: middle;">{{host.status}}</td>
+                {% endif %}
+                <td class="report-text-position" style="vertical-align: middle;">{{host.availability}}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% endfor %}
+</div>
+{% endblock %}

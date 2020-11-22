@@ -1,0 +1,11 @@
+{% extends "book-menu.html" %}
+{% block form %}
+<div class="p-body">
+    <div class="d-flex justify-content-center p-0">
+        <h5 class="display-5">{{ name }}</h5>
+    </div>
+    <div class="container">
+        <embed type="image/svg+xml" src={{graph|safe}} style="max-width: 3000px;"/>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+.btn-login {
+    border: none;
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-login:hover {
+    border: none;
+    color: white;
+    transform: scale(1.05);
+    transition: .2s
+}

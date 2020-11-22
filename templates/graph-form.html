@@ -1,0 +1,98 @@
+{% extends "monitoring-menu.html" %}
+{% block form %}
+<section class="m-body">
+    <form method="POST" class="needs-validation" novalidate>
+        <fieldset class="m-form">
+            <h1 class="display-3">{{ name }}</h1>
+            <div id="divSelectHostgroup" class="p-form">
+                <label>Hostgroup</label>
+                <select class="b-1 custom-select select-query" name="selectHostgroup" id="selectHostgroup" style="width:100%;" required>
+                    {% for hostgroup in hostgroupList %}
+                        <option value="{{ hostgroup.id }}">{{hostgroup.name}}</option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">Select at least one hostgroup</div>
+            </div>
+            <div id="divSelectHost" class="p-form m-form-element">
+                <label>Host</label>
+                <select class="b-1 custom-select select-query" name="selectHost" id="selectHost" style="width:100%;" required></select>
+                <div class="invalid-feedback">Select at least one host</div>
+            </div>
+            <h3 class="display-5 m-form-element">Report range</h3>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input class="custom-control-input" id="radioReportRangeStandard" name="radioReportRange" type="radio" onclick="radioStandard()" required>
+                <label class="custom-control-label" for="radioReportRangeStandard">Type</label>
+            </div>
+            
+            <div class="custom-control custom-radio custom-control-inline">
+                <input class="custom-control-input" id="radioReportRangeCustom" name="radioReportRange" type="radio" onclick="radioCustom()" required>
+                <label class="custom-control-label" for="radioReportRangeCustom">Custom</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <select class="b-1 custom-select" name="selectStandard" id="selectStandard" disabled style="display: none;">
+                    <optgroup label="Actual">
+                        <option value="today">Today</option>
+                        <option value="todaySoFar">Today so far</option>
+                        <option value="thisWeek">This week</option>
+                        <option value="thisWeekSoFar">This week so far</option>
+                        <option value="thisMonth">This month</option>
+                        <option value="thisMonthSoFar">This month so far</option>
+                        <option value="thisYear">This year</option>
+                        <option value="thisYearSoFar">This year so far</option>
+                    </optgroup>
+                    <optgroup label="Previous">
+                        <option value="yesterday">Yesterday</option>
+                        <option value="dayBeforeYesterday">Day before yesterday</option>
+                        <option value="thisDayLastWeek">This day last week</option>
+                        <option value="previousWeek">Previous week</option>
+                        <option value="previousMonth">Previous month</option>
+                        <option value="previousYear">Previous year</option>
+                    </optgroup>
+                    <optgroup label="Last">
+                        <option value="last5Minutes">Last 5 minutes</option>
+                        <option value="last15Minutes">Last 15 minutes</option>
+                        <option value="last30Minutes">Last 30 minutes</option>
+                        <option value="last1Hour">Last 1 hour</option>
+                        <option value="last3Hours">Last 3 hours</option>
+                        <option value="last6Hours">Last 6 hours</option>
+                        <option value="last12Hours">Last 12 hours</option>
+                        <option value="last1Day">Last 1 day</option>
+                        <option value="last2Days">Last 2 days</option>
+                        <option value="last7Days">Last 7 days</option>
+                        <option value="last30Days">Last 30 days</option>
+                        <option value="last3Months">Last 3 months</option>
+                        <option value="last6months">Last 6 months</option>
+                        <option value="lastYear">Last 1 year</option>
+                        <option value="last2Years">Last 2 years</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="form-check form-check-inline">
+                <input disabled id="startDate" name="startDate" type="date" size="8" class="form-control m-form-inline" style="display: none;" value="">
+                <input disabled id="endDate" name="endDate" type="date" size="8" class="form-control m-form-inline" style="display: none;" value="">    
+            </div>
+            <div>
+                <button type="submit" id="itemSubmit" class="btn btn-outline-primary m-form-element" name="itemSubmit" formaction="{{url_for('pageGraphReport')}}"><i class="far fa-chart-bar"></i> Report</button>
+                <button type="submit" id="pdfItemSubmit" class="btn btn-outline-danger m-form-element" name="pdfItemSubmit" value="PDF" formaction="{{url_for('pagePdfGraphsReport')}}"><i class="fas fa-file-pdf"></i> PDF</button>
+            </div>
+        </fieldset>
+    </form>
+</section>
+<script>
+    (function() {
+        window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+            }, false);
+        });
+        }, false);
+    })();
+</script>
+{% endblock %}

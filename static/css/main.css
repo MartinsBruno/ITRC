@@ -1,0 +1,125 @@
+@import "reset.css";
+@import "login.css";
+@import "template.css";
+@import "../plugins/bootstrap/custom-bootstrap.css";
+
+/* General Properties */
+
+.m-body{
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 2%;   
+}
+.m-form{
+    margin-bottom: 2%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+.m-form-element {
+    margin-top: 2%;
+}
+.m-form-inline{
+    margin-right: 5%;
+}
+.p-main{
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 5%;
+}
+.main-navbar {
+    padding-top: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.p-chebox {
+    padding-right: 20px;
+    padding-top: 10px;
+}
+
+/* Select forms */
+.non-query-select{
+    font-size: 1rem;
+    font-weight: 400;
+} 
+
+
+/* Index Carousel Properties */
+.index-carousel {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+.carousel-image {
+    object-fit: cover;
+    height: 300px;
+}
+.carousel-title {
+    color:black; 
+    text-shadow: 3px 2px 12px #FFFFFF;
+}
+.carousel-description {
+    color:black; 
+    text-shadow: 3px 2px 12px #FFFFFF;
+}
+
+/* Report */
+.section-main-image{
+    padding-top: 12%;
+}
+
+.report-main-image {
+    object-fit: cover;
+    height: 150px;
+}
+
+.report-cover-footer{
+    padding-top: 65%;
+}
+
+.report-cover-footer-image {
+    object-fit: cover;
+    height: 50px;
+}
+
+.report-font {
+    font-family: Century Gothic;
+    font-size: 40pt;
+}
+
+.report-name {
+    font-family: Century Gothic;
+    font-size: 40pt;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.report-date {
+    font-family: Century Gothic;
+    font-size: 25pt;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.report-font-subtitle {
+    font-family: Century Gothic;
+    font-size: 17pt;
+    color: red;
+    padding-top: 0%;
+    border-bottom: 1px solid red;
+    padding-bottom: 1%;
+}
+
+.report-font-generic {
+    font-family: Century Gothic;
+    font-size: 10pt;
+    color: black;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.report-summary-items {
+    color: black;
+}
+
+.report-summary-title{
+    padding-bottom: 4%;
+}

@@ -1,0 +1,56 @@
+{% extends "monitoring-menu.html" %}
+{% block form %}
+{% for host in list %}
+<div class="p-body">
+    <div class="d-flex justify-content-center p-0">
+        <h5 class="display-5">{{ host.name }}</h5>
+    </div>
+    <div class="container table-responsive">
+        <table id="dtBasicExample" class="table table-sm table-striped table-bordered" style="height: 100px;">
+            <thead class="thead-light">
+                <tr>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">ID</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Severity</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Event</th>
+                    <th class="th-sm" scope="row">Name</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trigger in host.infos %}
+                <tr>
+                    <td style="text-align: center; vertical-align: middle;">{{trigger.id}}</td>
+                    {% if trigger.priority == "Not classified"%}
+                    <td id="tdPriority" style="text-align: center; vertical-align: middle;">{{trigger.priority}}</td>
+                    {% elif trigger.priority == "Information"%}
+                    <td id="tdPriority" class="table-information" style="text-align: center; vertical-align: middle;">{{trigger.priority}}</td>
+                    {% elif trigger.priority == "Warning"%}
+                    <td id="tdPriority" class="table-warning" style="text-align: center; vertical-align: middle;">{{trigger.priority}}</td>
+                    {% elif trigger.priority == "Average"%}
+                    <td id="tdPriority" class="table-average" style="text-align: center; vertical-align: middle;">{{trigger.priority}}</td>
+                    {% elif trigger.priority == "High"%}
+                    <td id="tdPriority" class="table-danger" style="text-align: center; vertical-align: middle;">{{trigger.priority}}</td>
+                    {% elif trigger.priority == "Disaster"%}
+                    <td id="tdPriority" class="table-disaster" style="text-align: center; vertical-align: middle;">{{trigger.priority}}</td>
+                    {% endif %}
+                    {% if trigger.value == "0"%}
+                    <td class="table-success" style="text-align: center; vertical-align: middle;">OK</td>
+                    {% else %}
+                    <td id="tdValue" class="table-disaster" style="text-align: center; vertical-align: middle;">PROBLEM</td>
+                    {% endif %}
+                    <td style="vertical-align: middle;">{{trigger.description}}</td>
+                    {% if trigger.status == "0" %}
+                    <td class="table-success" style="text-align: center; vertical-align: middle;">Enable</td>
+                    {% else %}
+                    <td id="tdStatus" class="table-disaster" style="text-align: center; vertical-align: middle;">Disabled</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+    {% endfor %}
+{% endblock %}
+    
+

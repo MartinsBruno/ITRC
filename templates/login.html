@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-US" data-product="Service IT">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="png" href="{{url_for('static', filename='icons/favicon/favicon.png')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='plugins/bootstrap/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='plugins/font-awesome/all.min.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+        <title>{{title}}</title>
+    </head>
+    <body>
+        <div class="d-flex align-items-center min-vh-100">
+            <div class="container text-center">
+                <form method="POST" action="/authentication" class="text-center border border-light p-5">
+                    <p class="h4 mb-4" style="color: #000">Service ITRC</p>
+                    <div class="form-group">
+                        <input class="form-control mb-4" id="inputUsername" name="inputUsername" placeholder="Username" type="text">
+                    <div class="form-group">
+                        <input class="form-control mb-4" id="inputPassword" name="inputPassword" placeholder="Password" type="password">
+                    </div>
+                    <button class="btn btn-danger btn-block my-4" id="loginSubmit" name="loginSubmit" type="submit">Login</button>
+                </form>
+            </div>
+            <footer class="page-footer font-small indigo">
+                <div class="container">
+                    <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+                        <div class="col-md-8 col-12 mt-5">
+                        </div>
+                    </div>
+                    <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+                        <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="" data-toggle="modal" data-target="#aboutModal">About</a>
+                        </h6>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="" data-toggle="modal" data-target="#functionsModal">Functions</a>
+                        </h6>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="https://monitoracao.service.com.br/zabbix1/" target="_blank">Zabbix</a>
+                        </h6>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="" data-toggle="modal" data-target="#contactModal">Contact</a>
+                        </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright text-center py-3">© 2020 Copyright: <a href="https://www.service.com">Service IT</a></div>
+            </footer>
+            <p style="page-break-inside: avoid"></p>
+            <!-- About Modal -->
+            <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">About</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    ...
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- About Modal -->
+            <!-- Functions Modal -->
+            <div class="modal fade" id="functionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Functions</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        In this application we have reports as a service of the following information from the monitoring system.
+                        <hr>
+                        <hX class="text-uppercase font-weight-bold">Monitoring</hX>
+                        <ul class="list-unstyled">
+                            <li class="list-inline-item">Items |</li>
+                            <li class="list-inline-item">Triggers |</li>
+                            <li class="list-inline-item">Events |</li>
+                            <li class="list-inline-item">Hosts |</li>
+                            <li class="list-inline-item">Graphs</li>
+                        </ul>
+                        <hr>
+                        <hX class="text-uppercase font-weight-bold">Capacity</hX>
+                        <ul class="list-unstyled">
+                            <li class="list-inline-item">Availability Analysis</li>
+                        </ul>
+                        <hr>
+                        <hX class="text-uppercase font-weight-bold">Troubleshooting</hX>
+                        <ul class="list-unstyled">
+                            <li class="list-inline-item">Unsupported Items</li>
+                        </ul>
+                        <hr>
+                        <hX class="text-uppercase font-weight-bold">Documentation</hX>
+                        <ul class="list-unstyled">
+                            <li class="list-inline-item">Checklist</li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Functions Modal -->
+            <!-- Contact Modal -->
+            <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Contact</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-inline">
+                            <div class="form-group mb-2">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="form-group mx-sm-3 mb-2">
+                                <input id="zabbixAddress" class="form-control" type="text" value="monitoracao@service.com.br" placeholder="monitoracao@service.com.br" readonly>
+                            </div>
+                            <div class="form-group mx-sm-3 mb-2">
+                                <button onclick="copyEmail()" type="button" class="btn btn-outline-dark btn-sm"><i class="fas fa-clipboard"></i></button>
+                            </div>
+                            <hr class="clearfix w-100 d-md-none">
+                        </form>
+                        This is the email address of those responsible for the application, where any necessary contact must occur through it.
+                    </div>
+                </div>
+                </div>
+            </div>
+        <script src="{{url_for('static', filename='plugins/jquery/jquery.slim.min.js')}}"></script>
+        <script src="{{url_for('static', filename='plugins/bootstrap/bootstrap.min.js')}}"></script>
+        <script src="{{url_for('static', filename='plugins/font-awesome/all.min.js')}}"></script>
+        <script>
+            function copyEmail() {
+            var copyText = document.getElementById("zabbixAddress");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            } 
+        </script>
+    </body>
+</html>

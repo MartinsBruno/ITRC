@@ -1,0 +1,32 @@
+{% extends "administration-menu.html" %}
+{% block form %}
+    <div class="p-body">
+        <div class="d-flex justify-content-center p-0">
+            <h5 class="display-5">User List</h5>
+        </div>
+        <div class="container table-responsive">
+            <table id="dtBasicExample" class="table table-sm table-striped table-bordered" style="height: 100px;">
+                <thead class="thead-light">
+                    <tr>
+                        <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">ID</th>
+                        <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Name</th>
+                        <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Surname</th>
+                        <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Alias</th>
+                        <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in userList %}
+                    <tr>
+                        <td style="text-align: center; vertical-align: middle;">{{user.id}}</td>
+                        <td style="text-align: center; vertical-align: middle;">{{user.name}}</td>
+                        <td style="text-align: center; vertical-align: middle;">{{user.surname}}</td>
+                        <td style="text-align: center; vertical-align: middle;">{{user.alias}}</td>
+                        <td style="text-align: center; vertical-align: middle;">{{user.type}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

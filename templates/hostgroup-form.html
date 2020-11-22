@@ -1,0 +1,40 @@
+{% extends "monitoring-menu.html" %}
+{% block form %}
+<section class="m-body">
+    <form method="POST" class="needs-validation" novalidate>
+        <fieldset class="m-form">
+            <h1 class="display-3">{{ name }}</h1>
+            <div id="divSelectHostgroup" class="p-form">
+                <label>Hostgroups</label>
+                <select class="b-1 custom-select select-query" name="selectHostgroup" id="selectHostgroup" style="width:100%;" required multiple="multiple">
+                    {% for hostgroup in hostgroupList %}
+                        <option value="{{ hostgroup.id }}">{{hostgroup.name}}</option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">Select at least one hostgroup</div>
+            </div>
+            <div>
+                <button type="submit" id="hostgroupSubmit" class="btn btn-outline-primary m-form-element" name="hostSubmit" formaction="{{url_for('pageHostgroupReport')}}"><i class="far fa-chart-bar"></i> Report</button>
+                <!--<button type="submit" id="pdfHostSubmit" class="btn btn-outline-danger m-form-element" name="pdfHostSubmit" formaction="{{url_for('pagePdfHostsReport')}}"><i class="fas fa-file-pdf"></i> PDF</button>-->
+                <button type="submit" id="pdfHostgroupSubmit" class="btn btn-outline-success m-form-element btn-disabled" name="pdfHostgroupSubmit" value="PDF" formaction="{{url_for('excelHostgroupReport')}}"><i class="fas fa-file-excel"></i> Excel</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<script>
+    (function() {
+        window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+            }, false);
+        });
+        }, false);
+    })();
+</script>
+{% endblock %}

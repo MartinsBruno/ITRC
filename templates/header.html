@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-product="Service IT">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/png" href="../static/icons/favicon/favicon.png">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/main.css') }}">
+        <title>{{title}}</title>
+    </head>
+    <body>
+        <div class="container">
+        <div class="page-header">
+            <center><h1 class="display-4">{{ name }}</h4></center>
+        </div>
+        {% block conteudo %} {% endblock %}
+        </div>
+        <script type=text/javascript src="{{url_for('static', filename='js/main.js') }}"></script>
+    </body>
+</html>

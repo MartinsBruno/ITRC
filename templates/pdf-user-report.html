@@ -1,0 +1,27 @@
+{% extends "template-pdf.html" %}
+{% block conteudo %}
+<div class="container table-responsive">
+    <table id="dtBasicExample" class="table table-sm table-striped table-bordered" style="height: 100px;">
+        <thead class="thead-light">
+            <tr>
+                <th class="th-sm report-text-position" scope="row">ID</th>
+                <th class="th-sm report-text-position" scope="row">Name</th>
+                <th class="th-sm report-text-position" scope="row">Surname</th>
+                <th class="th-sm report-text-position" scope="row">Alias</th>
+                <th class="th-sm report-text-position" scope="row">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in userList %}
+            <tr>
+                <td class="report-text-position">{{user.id}}</td>
+                <td class="report-text-position">{{user.name}}</td>
+                <td class="report-text-position">{{user.surname}}</td>
+                <td class="report-text-position">{{user.alias}}</td>
+                <td class="report-text-position">{{user.type}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

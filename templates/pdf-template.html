@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-product="Service IT">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <style>
+            .table-success{
+                color: green;
+            }
+            .table-information{
+                color: blue;
+            }
+            .table-warning{
+                color: yellow;
+            }
+            .table-average{
+                color: orange;
+            }
+            .table-danger{
+                color: orangered;
+            }
+            .table-disaster{
+                color: red;
+            }
+            .table-position{
+                text-align: center; 
+                vertical-align: middle;
+            }
+        </style>
+        <div class="container">
+        <div class="page-header">
+            <center><h1 class="display-4">{{ name }}</h4></center>
+        </div>
+        {% block conteudo %} {% endblock %}
+        </div>
+    </body>
+</html>

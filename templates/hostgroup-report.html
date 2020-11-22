@@ -1,0 +1,27 @@
+{% extends "monitoring-menu.html" %}
+{% block form %}
+{% for hostgroup in list %}
+<div class="p-body">
+    <div class="d-flex justify-content-center p-0">
+        <h5 class="display-5">{{ hostgroup.name }}</h5>
+    </div>
+    <div class="container table-responsive">
+        <table id="dtBasicExample" class="table table-sm table-striped table-bordered" style="height: 100px;">
+            <thead class="thead-light">
+                <tr>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for host in hostgroup.hostsList %}
+                <tr id="{{host.visibleName}}">
+                    <td style="text-align: center; vertical-align: middle;">{{host.name}}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
+    
