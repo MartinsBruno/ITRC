@@ -1,0 +1,82 @@
+{% extends "monitoring-menu.html" %}
+{% block form %}
+{% for host in list %}
+<div class="p-body">
+    <div class="d-flex justify-content-center p-0">
+        <h5 class="display-5">{{ host.name }}</h5>
+    </div>
+    {% if host.applicationFilter == "ALL" %}
+        {% for application in host.applicationList %}
+        <table class="table table-sm table-bordered">
+            <thead class="thead-light">
+                <tr id='{{application.name}}'>
+                    <th colspan="6" class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">{{application.name}}</th>
+                <tr>
+                <tr>
+                    <th class="th-sm" scope="row">Name</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Trends</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Interval</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">History</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Triggers</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in host.itemList %}
+            {% if item.applicationList[0] == application.name %}
+                <tr>
+                    <td style="vertical-align: middle; max-width: 45%;">{{item.name}}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{item.trends}}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{item.interval}}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{item.history}}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{item.triggers}}</td>
+                    {% if item.status == "Enable"%}
+                        <td class="table-success" style="text-align: center; vertical-align: middle;">{{item.status}}</td>
+                    {% else %}
+                        <td class="table-danger" style="text-align: center; vertical-align: middle;">{{item.status}}</td>
+                    {% endif %}
+                </tr>
+            {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        {% endfor %}
+    {% else %}
+        <table class="table table-sm table-bordered">
+            <thead class="thead-light">
+                <tr id='{{applicationFilter}}'>
+                    <th colspan="6" class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">{{applicationFilter}}</th>
+                <tr>
+                <tr>
+                    <th class="th-sm" scope="row">Name</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Trends</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Interval</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">History</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Triggers</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in host.itemList %}
+            {% if item.applicationList[0] == applicationFilter or item.applicationList[1] == applicationFilter %}
+                <tr>
+                    <td style="vertical-align: middle; max-width: 45%;">{{item.name}}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{item.trends}}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{item.interval}}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{item.history}}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{item.triggers}}</td>
+                    {% if item.status == "Enable"%}
+                        <td class="table-success" style="text-align: center; vertical-align: middle;">{{item.status}}</td>
+                    {% else %}
+                        <td class="table-danger" style="text-align: center; vertical-align: middle;">{{item.status}}</td>
+                    {% endif %}
+                </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    </div>
+{% endfor %}
+{% endblock %}

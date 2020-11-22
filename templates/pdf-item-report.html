@@ -1,0 +1,83 @@
+{% extends "template-pdf.html" %}
+{% block conteudo %}
+{% if applicationFilter == "ALL" %}
+<section class="page-header">
+    <h1 class="text-center report-font report-summary-title">Summary</h1>
+    {% for application in applicationList %}
+        <p class="text-center p-0"><a class="report-summary-items" style="text-decoration: none;" href='#{{application.name}}'>{{application.name}}</a></p>
+    {% endfor %}
+    <p style="page-break-before: always"></p>
+</section>
+{% endif %}
+{% if applicationFilter == "ALL" %}
+{% for application in applicationList %}
+    <table class="table table-sm table-bordered">
+        <thead class="thead-light">
+            <tr id='{{application.name}}'>
+                <th colspan="6" class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">{{application.name}}</th>
+            <tr>
+            <tr>
+                <th class="th-sm" scope="row">Name</th>
+                <th class="th-sm report-text-position" scope="row">Trends</th>
+                <th class="th-sm report-text-position" scope="row">Interval</th>
+                <th class="th-sm report-text-position" scope="row">History</th>
+                <th class="th-sm report-text-position" scope="row">Triggers</th>
+                <th class="th-sm report-text-position" scope="row">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in itemList %}
+        {% if item.applicationList[0] == application.name%}
+            <tr>
+                <td class="th-sm" style="vertical-align: middle;">{{item.name}}</td>
+                <td class="report-text-position" style="vertical-align: middle;">{{item.trends}}</td>
+                <td class="report-text-position" style="vertical-align: middle;">{{item.interval}}</td>
+                <td class="report-text-position" style="vertical-align: middle;">{{item.history}}</td>
+                <td class="report-text-position" style="vertical-align: middle;">{{item.triggers}}</td>
+                {% if item.status == "Enable" %}
+                    <td class="report-text-position report-text-success" style="vertical-align: middle;">{{item.status}}</td>
+                {% else %}
+                    <td class="report-text-position report-text-disaster" style="vertical-align: middle;">{{item.status}}</td>
+                {% endif %}
+            </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+    {% else %}
+    <table class="table table-sm table-bordered">
+        <thead class="thead-light">
+            <tr id='{{applicationFilter}}'>
+                <th colspan="6" class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">{{applicationFilter}}</th>
+            <tr>
+            <tr>
+                <th class="th-sm" scope="row">Name</th>
+                <th class="th-sm report-text-position" scope="row">Trends</th>
+                <th class="th-sm report-text-position" scope="row">Interval</th>
+                <th class="th-sm report-text-position" scope="row">History</th>
+                <th class="th-sm report-text-position" scope="row">Triggers</th>
+                <th class="th-sm report-text-position" scope="row">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in itemList %}
+        {% if item.applicationList[0] == applicationFilter %}
+            <tr>
+                <td class="th-sm" style="vertical-align: middle;">{{item.name}}</td>
+                <td class="report-text-position" style="vertical-align: middle;">{{item.trends}}</td>
+                <td class="report-text-position" style="vertical-align: middle;">{{item.interval}}</td>
+                <td class="report-text-position" style="vertical-align: middle;">{{item.history}}</td>
+                <td class="report-text-position" style="vertical-align: middle;">{{item.triggers}}</td>
+                {% if item.status == "Enable" %}
+                    <td class="report-text-position report-text-success" style="vertical-align: middle;">{{item.status}}</td>
+                {% else %}
+                    <td class="report-text-position report-text-disaster" style="vertical-align: middle;">{{item.status}}</td>
+                {% endif %}
+            </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}

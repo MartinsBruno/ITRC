@@ -1,0 +1,99 @@
+/*!
+ * Custom CSS
+ */
+ .report-text-success{
+    color: green;
+  }
+  .report-text-information{
+    color: blue;
+  }
+  .report-text-warning{
+    color: yellow;
+  }
+  .report-text-average{
+    color: orange;
+  }
+  .report-text-danger{
+    color: orangered;
+  }
+  .report-text-disaster{
+    color: red;
+  }
+  .report-text-position{
+    text-align: center; 
+    vertical-align: middle;
+  }
+  .pre-text-format{
+    text-align: center; 
+    border: none; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+.table-information,
+.table-information > th,
+.table-information > td {
+  background-color: #badeff;
+}
+
+.table-information th,
+.table-information td,
+.table-information thead th,
+.table-information tbody + tbody {
+  border-color: #badeff;
+}
+
+.table-hover .table-information:hover {
+  background-color: #aad6ff;
+}
+
+.table-hover .table-information:hover > td,
+.table-hover .table-information:hover > th {
+  background-color: #aad6ff;
+}
+
+.table-disaster,
+.table-disaster > th,
+.table-disaster > td {
+  background-color: #f29fa9;
+}
+
+.table-disaster th,
+.table-disaster td,
+.table-disaster thead th,
+.table-disaster tbody + tbody {
+  border-color: #f29fa9;
+}
+
+.table-hover .table-disaster:hover {
+  background-color: #f0909c;
+}
+
+.table-hover .table-disaster:hover > td,
+.table-hover .table-disaster:hover > th {
+  background-color: #f0909c;
+}
+
+.table-average,
+.table-average > th,
+.table-average > td {
+  background-color: #ffeeba;
+}
+
+.table-average th,
+.table-average td,
+.table-average thead th,
+.table-average tbody + tbody {
+  border-color: #ffeeba;
+}
+
+.table-hover .table-average:hover {
+  background-color: #fde7a4;
+}
+
+.table-hover .table-average:hover > td,
+.table-hover .table-average:hover > th {
+  background-color: #fde7a4;
+}

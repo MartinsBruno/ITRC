@@ -1,0 +1,15 @@
+{% extends "monitoring-menu.html" %}
+{% block form %}
+<div class="p-body">
+    <div class="d-flex justify-content-center p-0">
+        <h5 class="display-5">{{ name }}</h5>
+    </div>
+    <form action="">
+    {% for graph in graphList %}
+        <center><img class="img-fluid NO-CLASS" src={{graph.path}}  alt=""></center>
+        <!--<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <hr>-->
+    {% endfor %}
+    </form>
+</div>
+{% endblock %}

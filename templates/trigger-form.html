@@ -1,0 +1,71 @@
+{% extends "monitoring-menu.html" %}
+{% block form %}
+<section class="m-body"> 
+    <form method="POST" id="reportForm" class="needs-validation" novalidate>
+        <fieldset class="m-form">
+            <h1 class="display-3">{{ name }}</h1>
+            <div id="divSelectHostgroup" class="p-form">
+                <label>Hostgroup</label>
+                <select class="b-1 custom-select select-query" name="selectHostgroup" id="selectHostgroup" style="width:100%;" required>
+                    {% for hostgroup in hostgroupList %}
+                        <option value="{{ hostgroup.id }}">{{hostgroup.name}}</option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">Select at least one hostgroup</div>
+            </div>
+            <div id="divSelectHost" class="p-form m-form-element">
+                <label>Host</label>
+                <select class="b-1 custom-select select-query" name="selectHost" id="selectHost" style="width:100%;" required multiple="multiple"></select>
+                <div class="invalid-feedback">Select at least one host</div>
+            </div>
+            
+            <div class="p-form m-form-element">
+                <button type="button" class="btn btn-primary btn-sm btn-danger" id="btnSelectAll" title="All hosts will be selected.">
+                    All hosts
+                </button>
+            </div>
+
+            <h3 class="display-5 m-form-element">Tag Filter</h3>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input class="custom-control-input" id="allTriggerTags" name="tagSelection" type="radio" onclick="radioAllTriggerTags()" required>
+                <label class="custom-control-label" for="allTriggerTags">All</label>
+            </div>
+            
+            <div class="custom-control custom-radio custom-control-inline">
+                <input class="custom-control-input" id="specificTriggerTag" name="tagSelection" type="radio" onclick="radioSpecificTriggerTag()" required>
+                <label class="custom-control-label" for="specificTriggerTag">Specific</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="selectTags" id="selectAllTriggerTags" type="hidden" value="ALL" disabled>
+            </div>
+            
+            <div class="form-check form-check-inline">
+                <select disabled class="b-1 custom-select" name="selectTags" id="specificTagSelect" style="display: none"></select>
+            </div>
+
+            <div>
+                <button type="submit" id="triggerSubmit" class="btn btn-outline-primary m-form-element" name="triggerSubmit" value="Report" formaction="{{url_for('pageTriggerReport')}}"><i class="far fa-chart-bar"></i> Report</button>
+                <button type="submit" id="pdfTriggerSubmit" class="btn btn-outline-danger m-form-element" name="triggerSubmit" value="PDF" formaction="{{url_for('pagePdfTriggerReport')}}"><i class="fas fa-file-pdf"></i> PDF</button>
+            </div>
+        </fieldset>
+    </form>
+</section>
+<script>
+    (function() {
+        window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+            }, false);
+        });
+        }, false);
+    })();
+</script>
+<script src="{{url_for('static', filename='js/trigger-report.js')}}"></script>
+{% endblock %}

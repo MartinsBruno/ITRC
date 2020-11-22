@@ -1,0 +1,48 @@
+{% extends "monitoring-menu.html" %}
+{% block form %}
+<div class="p-body">
+    <div class="d-flex justify-content-center p-0">
+        <h5 class="display-5">{{ name }}</h5>
+    </div>
+    <div class="container table-responsive">
+        {% for host in hostList %}
+        <table id="dtBasicExample" class="table table-sm table-striped table-bordered" style="height: 100px;">
+            <thead class="thead-light">
+                <tr id='{{host.name}}'>
+                    <th colspan="7" class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">{{host.name}}</th>
+                <tr>
+                <tr>
+                    <!--<th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Name</th>-->
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Interface</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Applications</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Items</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Triggers</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Graphs</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Status</th>
+                    <th class="th-sm" scope="row" style="text-align: center; vertical-align: middle;">Availability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="{{host.visibleName}}">
+                    <!--<td style="text-align: center; vertical-align: middle; max-width:300px;"><pre style="text-align: center; border: none; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+                               font-size: 1rem;
+                               font-weight: 400;
+                               line-height: 1.5;">{{host.name}}</pre></td>-->
+                    <td style="text-align: center; vertical-align: middle;">{{host.interface}}</td>
+                    <td style="vertical-align: middle;"><pre style="text-align: center; border: none; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+                               font-size: 1rem;
+                               font-weight: 400;
+                               line-height: 1.5;">{{host.application}}</pre></td>
+                    <td style="text-align: center; vertical-align: middle;">{{host.item}}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{host.triggers}}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{host.graphs}}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{host.status}}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{host.availability}}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}
+    

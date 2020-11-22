@@ -1,0 +1,38 @@
+{% extends "template-pdf.html" %}
+{% block conteudo %}
+<div class="p-body">
+    <div class="d-flex justify-content-center p-0">
+        <h5 class="display-5">{{ name }}</h5>
+    </div>
+    <div class="container">
+        <embed type="image/svg+xml" src={{graph|safe}} style="max-width: 3000px;"/>
+        <div class="table-responsive">
+            <table id="dtBasicExample" class="table table-sm table-striped table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th class="th-sm report-text-position" scope="row">Average</th>
+                        <th class="th-sm report-text-position" scope="row">Max Value</th>
+                        <th class="th-sm report-text-position" scope="row">Number of CPUs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% if itemList[0]["average"] > itemList[0]["numberCPU"]%}
+                            <td class="report-text-position report-text-disaster" style="vertical-align: middle;">{{itemList[0]["average"]}}</td>
+                        {% else %}
+                            <td class="report-text-position report-text-success" style="vertical-align: middle;">{{itemList[0]["average"]}}</td>
+                        {% endif %}
+
+                        {% if itemList[0]["maxValue"] > itemList[0]["numberCPU"]%}
+                            <td class="report-text-position report-text-disaster" style="vertical-align: middle;">{{itemList[0]["maxValue"]}}</td>
+                        {% else %}
+                            <td class="report-text-position report-text-success" style="vertical-align: middle;">{{itemList[0]["maxValue"]}}</td>
+                        {% endif %}
+                        <td class="report-text-position" style="vertical-align: middle;">{{itemList[0]["numberCPU"]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

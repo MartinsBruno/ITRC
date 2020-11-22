@@ -1,0 +1,47 @@
+{% extends "template-pdf.html" %}
+{% block conteudo %}
+<div class="container table-responsive">
+    <table id="dtBasicExample" class="table table-sm table-striped table-bordered" style="height: 100px;">
+        <thead class="thead-light">
+            <tr>
+                <th class="th-sm report-text-position" scope="row">ID</th>
+                <th class="th-sm report-text-position" scope="row">Severity</th>
+                <th class="th-sm report-text-position" scope="row">Event</th>
+                <th class="th-sm" scope="row">Name</th>
+                <th class="th-sm report-text-position" scope="row">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trigger in triggerList %}
+            <tr>
+                <td class="report-text-position">{{trigger.id}}</td>
+                {% if trigger.priority == "Not classified"%}
+                    <td class="report-text-position">{{trigger.priority}}</td>
+                {% elif trigger.priority == "Information"%}
+                    <td class="report-text-information report-text-position">{{trigger.priority}}</td>
+                {% elif trigger.priority == "Warning"%}
+                    <td class="report-text-warning report-text-position">{{trigger.priority}}</td>
+                {% elif trigger.priority == "Average"%}
+                    <td class="report-text-average report-text-position">{{trigger.priority}}</td>
+                {% elif trigger.priority == "High"%}
+                    <td class="report-text-danger report-text-position">{{trigger.priority}}</td>
+                {% elif trigger.priority == "Disaster"%}
+                    <td class="report-text-disaster report-text-position">{{trigger.priority}}</td>
+                {% endif %}
+                {% if trigger.value == "0"%}
+                    <td class="report-text-success report-text-position">OK</td>
+                {% else %}
+                    <td class="report-text-disaster report-text-position">PROBLEM</td>
+                {% endif %}
+                    <td>{{trigger.description}}</td>
+                {% if trigger.status == "0" %}
+                    <td class="report-text-success report-text-position">Enable</td>
+                {% else %}
+                    <td class="report-text-disaster report-text-position">Disabled</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

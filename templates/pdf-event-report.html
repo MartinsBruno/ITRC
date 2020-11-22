@@ -1,0 +1,47 @@
+{% extends "template-pdf.html" %}
+{% block conteudo %}
+<div class="container table-responsive">
+    <table id="dtBasicExample" class="table table-sm table-striped table-bordered" style="height: 100px;">
+        <thead class="thead-light">
+            <tr>
+                <th class="th-sm report-text-position" scope="row">Time</th>
+                <th class="th-sm report-text-position" scope="row">Type</th>
+                <th class="th-sm report-text-position" scope="row">Critical</th>
+                <th class="th-sm report-text-position" scope="row">Trigger</th>
+                <th class="th-sm report-text-position" scope="row">ACK</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in eventList %}
+            <tr>
+                <td class="report-text-position">{{event.time}}</td>
+                {% if event.type == "OK"%}
+                    <td class="report-text-success report-text-position">{{event.type}}</td>
+                {% else %}
+                    <td class="report-text-disaster report-text-position">{{event.type}}</td>
+                {% endif %}
+                {% if event.severity == "Information"%}
+                    <td class="report-text-information report-text-position">{{event.severity}}</td>
+                {% elif event.severity == "Warning"%}
+                    <td class="report-text-warning report-text-position">{{event.severity}}</td>
+                {% elif event.severity == "Average"%}
+                    <td class="report-text-average report-text-position">{{event.severity}}</td>
+                {% elif event.severity == "High"%}
+                    <td class="report-text-danger report-text-position">{{event.severity}}</td>
+                {% elif event.severity == "Disaster"%}
+                    <td class="report-text-disaster report-text-position">{{event.severity}}</td>
+                {% else %}
+                    <td class="report-text-position">{{event.severity}}</td>
+                {% endif %}
+                <td>{{event.trigger}}</td>
+                {% if event.acknowledged == "Yes"%}
+                    <td class="report-text-success report-text-position">{{event.acknowledged}}</td>
+                {% else %}
+                    <td class="report-text-disaster report-text-position">{{event.acknowledged}}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
